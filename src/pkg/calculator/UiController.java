@@ -74,7 +74,6 @@ public class UiController implements Initializable {
                     }
                     appendDigitToCurrentLine();
                     return;
-
                 }
             }//if 2nd digit
             else {//countDigitsInLine[currentLine] from 2 to 12
@@ -118,7 +117,6 @@ public class UiController implements Initializable {
         } else {
             return resultLines[1].getText().substring(2).matches("[0]+");
         }
-
     }
 
     private void appendDigitToCurrentLine() {
@@ -145,13 +143,11 @@ public class UiController implements Initializable {
                 }
             }
         }
-
     }
 
     @FXML
     private void btnClear(ActionEvent event) {
         if (isCalculationCompleted) {
-            System.out.println("isCalculationCompleted");
             for (Label i : resultLines) {
                 i.setText("");
             }
@@ -169,7 +165,6 @@ public class UiController implements Initializable {
                 resetCurrentLine(0);
             }
         }
-
     }
 
     private void resetCurrentLine(int lineNumber) {
@@ -186,14 +181,12 @@ public class UiController implements Initializable {
             checkAndRemoveNegativeZero();
             lastOperator = operator;
             operator = ((Button) event.getSource()).getText();
-            System.out.println("clicked op "+operator);
             numbers[0] = Double.parseDouble(resultLines[0].getText());
             numbers[1] = Double.parseDouble(resultLines[1].getText().substring(1));
             numbers[2] = modelCalculate.calculate(numbers[0], numbers[1], lastOperator);
             resultLines[2].setText(formatNumber(numbers[2]));
 
             try {//pause for 0.3 seconds
-                System.out.println("Pause...");
                 Thread.sleep(300);
 
             } catch (InterruptedException ex) {
@@ -214,8 +207,6 @@ public class UiController implements Initializable {
             resultLines[1].setText(operator + " ");
             isCalculationCompleted = false;
         }
-        System.out.println("Operator: " + operator);
-
     }
 
     private void checkAndRemoveNegativeZero() {
@@ -260,7 +251,6 @@ public class UiController implements Initializable {
             }else return str;
         }
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb
